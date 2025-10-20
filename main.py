@@ -20,8 +20,10 @@ async def get_summary(
     db: Session = Depends(get_db),
     start_date: datetime | None = None,
     end_date: datetime | None = None,
+    limit: int | None = None,
+    offset: int | None = None,
 ):
-    return await service.summary(db, start_date, end_date)
+    return await service.summary(db, start_date, end_date, limit, offset)
 
 
 app.include_router(router)
